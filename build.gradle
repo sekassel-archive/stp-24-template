@@ -51,8 +51,11 @@ dependencies {
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitJupiterVersion
 
     testImplementation group: 'org.testfx', name: 'testfx-junit5', version: testFxVersion
-
     testImplementation group: 'org.testfx', name: 'openjfx-monocle', version: monocleVersion
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: mockitoVersion
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: hamcrestVersion
+
+    testAnnotationProcessor group: 'com.google.dagger', name: 'dagger-compiler', version: daggerVersion
 }
 
 java {

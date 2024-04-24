@@ -16,12 +16,17 @@ import java.util.logging.Level;
 import static javafx.scene.input.KeyEvent.KEY_PRESSED;
 
 public class App extends FulibFxApp {
-    private final MainComponent component;
+    private MainComponent component;
 
     public App() {
         super();
 
         this.component = DaggerMainComponent.builder().mainApp(this).build();
+    }
+
+    // package-private - only for testing
+    void setComponent(MainComponent component) {
+        this.component = component;
     }
 
     @Override
