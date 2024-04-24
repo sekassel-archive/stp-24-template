@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
     id 'jacoco'
     id 'org.openjfx.javafxplugin' version "$javaFxPluginVersion"
     id 'com.github.johnrengelman.shadow' version "$shadowPluginVersion"
@@ -7,6 +8,7 @@ plugins {
 
 group projectGroup
 version projectVersion
+mainClassName = 'de.uniks.stp24.Main'
 
 repositories {
     mavenCentral()
@@ -51,6 +53,20 @@ dependencies {
     testImplementation group: 'org.testfx', name: 'testfx-junit5', version: testFxVersion
 
     testImplementation group: 'org.testfx', name: 'openjfx-monocle', version: monocleVersion
+}
+
+java {
+    sourceCompatibility = getVersionForMajor(javaSourceVersion)
+    targetCompatibility = getVersionForMajor(javaTargetVersion)
+}
+
+static JavaVersion getVersionForMajor(String version) {
+    return JavaVersion.values().find { (it.majorVersion == version) }
+}
+
+compileJava {
+    options.encoding = "UTF-8"
+    options.sourcepath = sourceSets.main.resources.getSourceDirectories()
 }
 
 javafx {
